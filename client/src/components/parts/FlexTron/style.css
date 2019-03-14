@@ -1,0 +1,24 @@
+.FlexTron {
+    
+    width: 50%
+}
+
+.insideTron {
+    margin-left: 5%;
+}
+
+.jumboTitle {
+    font-size: 350%;
+}
+
+.jumboSub {
+    font-size: 170%;
+    font-weight: 525;
+    margin-left: 3%;
+}
+
+.jumboCon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

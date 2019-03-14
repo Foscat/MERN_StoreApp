@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const inventory = new Schema({
+const inventorySchema = new Schema({
 
     product_name: { type: String, unique: true },
     product_type: { type: String, required: true },
@@ -11,5 +11,5 @@ const inventory = new Schema({
     created_at: { type: Date },
 })
 
-const inventoryData = mongoose.model("inventory", inventory);
-module.exports = inventoryData;
+const Inventory = mongoose.model("Inventory", inventorySchema);
+module.exports = Inventory;
