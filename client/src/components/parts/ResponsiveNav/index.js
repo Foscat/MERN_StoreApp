@@ -18,7 +18,7 @@ class ResponsiveNav extends Component {
         return (
             <div style={{backgroundColor: "grey"}}>
 
-                <Nav horizontal>
+                <Nav>
 
                     <NavbarBrand>
                         <h2 className="navLogo">mylogo</h2>

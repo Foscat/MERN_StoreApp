@@ -12,7 +12,7 @@ const ProductSlide = (props) => {
                         <h2>{props.title}</h2>
                     </CardTitle>
 
-                    <CardImg  top width="250px" height="250px" src={props.image} />
+                    <CardImg  top width="75%" height="75%" src={props.image} />
 
                     <CardSubtitle>
                         <p>{props.subtitle}</p>

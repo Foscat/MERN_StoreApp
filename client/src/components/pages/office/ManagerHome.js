@@ -3,6 +3,8 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import TextCard from "../../parts/TextCard";
 import FlexTron from "../../parts/FlexTron"
 import ResponsiveNav from "../../parts/ResponsiveNav";
+import API from "../../../utils/API";
+import ManagerForm from '../../parts/ManagerForm';
 
 
 class ManagerHome extends Component {
@@ -11,9 +13,35 @@ class ManagerHome extends Component {
         super(props);
 
         this.state= {
-
+            pulledProducts: [],
+            searchTerm: "",
+            formInfo: {}
         }
     }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+          [name]: value
+        });
+    };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        this.handleProductAdd();
+    };
+
+
+    handleClick = (value) => {
+        console.log("click")
+        console.log(value);
+        API.getProducts()
+    };
+
+    handleProductAdd = () => {
+        const product = "carrots"
+    };
+
 
     render() {
         return (
@@ -30,7 +58,7 @@ class ManagerHome extends Component {
                             subtitle="Allows me to navagate and update store database"
                         >
                             <input type="text" placeholder="Search"></input>
-                            <Button>Submit Search</Button>
+                            <Button onClick={() => this.handleClick("my value")}>Submit Search</Button>
 
                         </FlexTron>
 
@@ -40,10 +68,13 @@ class ManagerHome extends Component {
                             <Col>
                                 <TextCard
                                     style={{backgroundColor: "#ddd", width: "45%"}}
-                                    title="Sample Card"
-                                    subtitle="just some filler"
+                                    title="Add products"
+                                    subtitle="Fill out form with product information and click submit to add to db"
                                 >
-                                    This is my text card
+                                    <ManagerForm 
+                                        handleInputChange={this.handleInputChange} 
+                                        handleFormSubmit={this.handleFormSubmit}
+                                    />
                                 </TextCard>
                             </Col>
                         </Row>

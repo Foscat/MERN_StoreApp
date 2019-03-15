@@ -14,7 +14,7 @@ export default {
     return axios.delete("/api/inventory/" + id);
   },
   // Saves an product to the database
-  saveProduct: function(productData) {
+  addProduct: function(productData) {
     return axios.post("/api/inventory", productData);
   }
 };
