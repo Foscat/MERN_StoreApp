@@ -13,6 +13,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    console.log("Inventory Controller")
     db.inventory.create(req.body)
       .then(dbInventory => res.json(dbInventory))
       .catch(err => res.status(422).json(err));

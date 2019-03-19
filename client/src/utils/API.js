@@ -15,6 +15,7 @@ export default {
   },
   // Saves an product to the database
   addProduct: function(productData) {
+    console.log(productData);
     return axios.post("/api/inventory", productData);
   }
 };

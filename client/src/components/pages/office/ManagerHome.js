@@ -63,15 +63,15 @@ class ManagerHome extends Component {
     addToInventory = async (info) => {
         console.log("Add to inventory state: ", this.state);
         this.setState({ loading: true  });
-        const addInfo = this.state.formInfo
+        const s = this.state
 
         API.addProduct({
-            product_name: addInfo.name,
-            departmant: addInfo.departmant,
-            manufacturer: addInfo.manufacturer,
-            total_stock: addInfo.quantity,
-            price: addInfo.price,
-            description: addInfo.description
+            product_name: s.addProName,
+            departmant: s.addProDept,
+            manufacturer: s.addProManu,
+            total_stock: s.addProQuan,
+            price: s.addProPrice,
+            description: s.addProDes
         })
         .then(() => this.getProducts())
     };
