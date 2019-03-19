@@ -7,6 +7,7 @@ const inventorySchema = new Schema({
     department: { type: String },
     manufacturer: { type: String },
     total_stock: { type: Number },
+    price: { type: Number },
     description: { type: String},
     created_at: { type: Date },
 })

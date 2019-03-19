@@ -18,3 +18,4 @@ export default {
     return axios.post("/api/inventory", productData);
   }
 };
+// http://localhost:3001/api/inventory
