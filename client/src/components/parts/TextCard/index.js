@@ -1,4 +1,5 @@
 import React from 'react';
+import "./style.css";
 import { Card, CardBody, CardHeader, CardTitle, CardSubtitle } from 'reactstrap';
 
 const TextCard = (props) => {
@@ -9,18 +10,20 @@ const TextCard = (props) => {
                 <CardHeader>
 
                     <CardTitle>
-                        <h2>{props.title}</h2>
+                        <h2 className="txtCardTitle">{props.title}</h2>
                     </CardTitle>
 
                     <CardSubtitle>
-                        <h5>{props.subtitle}</h5>
+                        <h4 className="txtCardSub">{props.subtitle}</h4>
                     </CardSubtitle>
 
                 </CardHeader>
 
                 <CardBody>
 
-                    {props.children}
+                    <div className="txtCardChildren">
+                        {props.children}
+                    </div>
         
                 </CardBody>
 

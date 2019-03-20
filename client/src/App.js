@@ -3,6 +3,7 @@ import {  BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import Home from "./components/pages/store/Home";
 import MangerHome from "./components/pages/office/ManagerHome";
 import NoMatch from './components/pages/NoMatch';
+import "./general.css";
 
 class App extends Component {
     render() {

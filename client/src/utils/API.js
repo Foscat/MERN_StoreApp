@@ -9,6 +9,9 @@ export default {
   getProducts: function() {
     return axios.get("/api/inventory");
   },
+  // getSingleProduct: function() {
+  //   return axios.get("/api/inventory/" + id)
+  // },
   // Deletes the product with the given id
   deleteProduct: function(id) {
     return axios.delete("/api/inventory/" + id);

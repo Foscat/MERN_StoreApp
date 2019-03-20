@@ -9,7 +9,7 @@ const inventorySchema = new Schema({
     total_stock: { type: Number },
     price: { type: Number },
     description: { type: String},
-    created_at: { type: Date },
+    created_at: { type: Date }
 })
 
 const Inventory = mongoose.model("Inventory", inventorySchema);
