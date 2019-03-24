@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const inventorySchema = new Schema({
 
     product_name: { type: String, unique: true },
+    image: { type: String },
     department: { type: String },
     manufacturer: { type: String },
     total_stock: { type: Number },

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-const ManagerAddProductForm = ({style, name, price, handleFormSubmit, handleInputChange, department, description, quantity, manufacturer}) => {
+const ManagerAddProductForm = ({style, handleFormSubmit, handleInputChange,}) => {
     return(
         <div className="ManagerForm">
             <Form style={style}>
@@ -10,6 +10,12 @@ const ManagerAddProductForm = ({style, name, price, handleFormSubmit, handleInpu
                     <Label for="productName">Name of product</Label>
                     <Input type="text" name="addProName" onChange={handleInputChange}
                      id="productName" placeholder="Product Name" />
+                </FormGroup>
+
+                <FormGroup>
+                    <Label for="productImage">Image Link</Label>
+                    <Input type="text" name="addProImg" onChange={handleInputChange}
+                     id="productName" placeholder="Picture Link" />
                 </FormGroup>
 
                 <FormGroup>

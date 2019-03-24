@@ -5,6 +5,7 @@ import FlexTron from "../../parts/FlexTron"
 import ResponsiveNav from "../../parts/ResponsiveNav";
 import API from "../../../utils/API";
 import ManagerAddProductForm from '../../parts/ManagerAddProductForm';
+import DepartmentRadioFilter from '../../parts/DepartmentRadioFilter';
 
 
 class ManagerHome extends Component {
@@ -18,6 +19,7 @@ class ManagerHome extends Component {
             loading: false,
             formInfo: {
                 name: "",
+                image: "",
                 department: "",
                 manufacturer: "",
                 quantity: null,
@@ -44,12 +46,21 @@ class ManagerHome extends Component {
         });
     };
 
+    // #### **Make backend and util methods and functions** ####
+    handleDeptFilterFormSubmit = event => {
+        console.log("form submit");
+        event.preventDefault();
+
+        // API.
+    }
+
     // Click handler that takes in infoand updates state. needed for sync timing to filter through
     handleAddProFormSubmit = event => {
         event.preventDefault();
         this.setState({ 
             formInfo: {
                 name: this.state.addProName,
+                image: this.state.addProImg,
                 department: this.state.addProDept,
                 manufacturer: this.state.addProManu,
                 quantity: this.state.addProQuan,
@@ -68,6 +79,7 @@ class ManagerHome extends Component {
 
         API.addProduct({
             product_name: s.addProName,
+            image: s.addProImg,
             department: s.addProDept,
             manufacturer: s.addProManu,
             total_stock: s.addProQuan,
@@ -89,6 +101,7 @@ class ManagerHome extends Component {
         this.setState({ loading: false  });
     }
 
+    // #### **Make backend and util methods and functions** ####
     // Function that gets info of a specific item
     getSingleItem = name => {
         console.log("Looking for single item")
@@ -129,41 +142,35 @@ class ManagerHome extends Component {
 
                         <h1>Manager Home</h1>
 
-                        <Row>
+                        <Row style={{display: "flex"}}>
                             <Col>
                                 <TextCard
-                                    style={{backgroundColor: "#ddd", width: "45%"}}
+                                    style={{backgroundColor: "#ddd"}}
                                     title="Add products"
                                     subtitle="Fill out form with product information and click submit to add to db"
                                 >
                                     <ManagerAddProductForm 
                                         handleInputChange={this.handleInputChange} 
                                         handleFormSubmit={this.handleAddProFormSubmit}
-                                        name={this.state.formInfo.name}
-                                        department={this.state.formInfo.department}
-                                        manufacturer={this.state.formInfo.manufacturer}
-                                        quantity={this.state.formInfo.quantity}
-                                        price={this.state.formInfo.price}
-                                        description={this.state.formInfo.description}
                                     />
                                 </TextCard>
                             </Col>
-                            
+
                             <Col>
                                 <TextCard
-                                    style={{backgroundColor:"#fff", width: "30%"}}
-                                    title="Add to inventory"
-                                    subtitle="Allows you to search for items in db and add stock to them"
+                                    style={{border: "solid red 2px"}}
+                                    title="Find products by demartment"
+                                    subtitle="Select a depeartment and click filter to get only items from that department."
                                 >
-
-                                    <Col>
-                                        <input type="text" name="lookup" onChange={this.handleInputChange}></input>
-                                        <button type="button" onClick={() => this.getSingleItem(this.state.lookup)}>Lookup</button>
-                                    </Col>
+                                    <DepartmentRadioFilter 
+                                        handleFormSubmit={this.handleDeptFilterFormSubmit}
+                                        handleInputChange={this.handleInputChange}
+                                    />
 
                                 </TextCard>
                             </Col>
                         </Row>
+
 
                         {/* Row containing all the inventory cards */}
                         <Row className="around">
@@ -189,6 +196,7 @@ class ManagerHome extends Component {
                                 </div>
                             ) : (<h1>Nothing Here</h1>)}
                         </Row>
+                        
 
                     </Row>
                 </Container>

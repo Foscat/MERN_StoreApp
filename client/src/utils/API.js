@@ -1,6 +1,10 @@
 import axios from "axios";
 
 export default {
+  addUser: function(userData) {
+    console.log(userData);
+    return axios.post("/api/customers", userData);
+  },
   // Gets all users
   getUsers: function() {
     return axios.get("/api/customers");

@@ -12,7 +12,7 @@ const ProductSlide = (props) => {
                         <h2>{props.title}</h2>
                     </CardTitle>
 
-                    <CardImg  top width="75%" height="75%" src={props.image} />
+                    <CardImg style={{width: "100%", height:"100%",maxHeight:"300px", maxWidth:"300px"}} src={props.image} />
 
                     <CardSubtitle>
                         <p>{props.subtitle}</p>
@@ -23,7 +23,7 @@ const ProductSlide = (props) => {
                 <hr />
 
                 <CardBody>
-                    <p>{props.description}</p>
+                    <p style={{display:"flex", width:"90%"}}>{props.description}</p>
                     <div>
                         {props.children}
                     </div>

@@ -1,3 +1,13 @@
+.ft_anton {
+    font-family: 'Anton', sans-serif;
+}
+.ft_mukta {
+    font-family: 'Mukta', sans-serif;
+}
+.ft_ubnCon {
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
 .center{
     display: flex;
     align-items: center;
