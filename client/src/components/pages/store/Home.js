@@ -7,6 +7,7 @@ import ProductSlide from "../../parts/ProductSlide";
 import CustomerSignUpForm from "../../parts/CustomerSignUpForm";
 import DepartmentRadioFilter from "../../parts/DepartmentRadioFilter";
 import API from '../../../utils/API';
+import SweetAlert from "react-bootstrap-sweetalert";
 
 class Home extends Component {
     constructor(props){
@@ -16,11 +17,17 @@ class Home extends Component {
             loading: false,
             userPool: [],
             pulledProducts: [],
-
+            myId: "",
+            info: null,
+            stockInfo: null,
+            show: false,
+            title: null,
+            text: null
         }
     }
 
     componentDidMount(){
+        this.getUsers();
         console.log(this.state);
     }
 
@@ -36,6 +43,14 @@ class Home extends Component {
         });
     }
 
+    handleDeptFilterFormSubmit = async () => {
+        console.log("Filter department", this.state.radio1);
+        // this.setState({ loading: true  });
+        // s = this.state
+
+        
+    }
+
     signUpUser = async () => {
         console.log("Add user state: ", this.state);
         this.setState({ loading: true  });
@@ -48,8 +63,10 @@ class Home extends Component {
             password: s.addCustPass,
             phone_num: s.addCustPhone,
             zipcode: s.addCustZip,
-            user_type: "customer"
+            user_type: "customer",
+            sale_history: ["beanbag"]
         })
+        // .then(this.setState({ myId: _id  }))
         .then(() => this.getUsers())
     };
 
@@ -77,10 +94,19 @@ class Home extends Component {
         this.setState({ loading: false  });
     }
 
-    addToCart = async (id) => {
+    addToCart = async (id, updateData) => {
         this.setState({ loading: true  });
         console.log("Adding to cart", id);
-        
+        API.updateUser(id, updateData).then(res => this.setState({ info: res.data  }));
+        this.takeStockFromInventory(updateData.sale_history, {total_stock:100})
+        // console.log(updateData.sale_history);
+    }
+
+    takeStockFromInventory = async (id, quantity) => {
+        console.log("info check", id, quantity)
+        API.updateProduct(id, quantity).then(res => this.setState({ stockInfo: res.data  }))
+
+       await this.getProducts();
     }
 
 
@@ -130,8 +156,9 @@ class Home extends Component {
                             title="my first card"
                             subtitle="subtitle"
                         >
-                            Stuff in my card
+                            
                             <Button type="button" onClick={() => this.getProducts()}>Get products</Button>
+                            <Button type="button" onClick={() => this.sweetTest()}>Sweet alert</Button>
                         </TextCard>
 
                         <Row style={{display:"flex"}}>
@@ -145,7 +172,7 @@ class Home extends Component {
                                     <CustomerSignUpForm 
                                         handleInputChange={this.handleInputChange}
                                         handleFormSubmit={this.signUpUser}
-                                        style={product}
+                                        style={signUp}
                                     />
                                 </TextCard>
                             </Col>
@@ -185,7 +212,7 @@ class Home extends Component {
                                                     <p>Price(each): {item.price}</p>
                                                     <p>Manufacturer: {item.manufacturer}</p>
                                                     <p>Total in stock: {item.total_stock}</p>
-                                                    <Button type="button" onClick={() => this.addToCart(item._id)}>Add to shopping cart</Button>
+                                                    <Button type="button" onClick={() => this.addToCart(this.state.myId, {"sale_history":item._id} )}>Add to shopping cart</Button>
                                                 </Col>
                                             </ProductSlide>
                                         );

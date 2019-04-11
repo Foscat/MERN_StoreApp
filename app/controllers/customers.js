@@ -19,9 +19,11 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
-    db.Customer.findOneAndUpdate({ id: req.params.id }, req.body)
-      .then(dbCustomer => res.json(dbCustomer))
+    console.log("Update log:", req.params.id, req.body)
+    db.Customer.findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbCustomer => (res.json(dbCustomer)))
       .catch(err => res.status(422).json(err));
+      
   },
   remove: function(req, res) {
     db.Customer.findById(req.params.id)

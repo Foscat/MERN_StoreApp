@@ -9,13 +9,13 @@ const ProductSlide = (props) => {
                 <CardHeader>
 
                     <CardTitle>
-                        <h2>{props.title}</h2>
+                        <h2 className="ft_ubnCon boldest">{props.title}</h2>
                     </CardTitle>
 
                     <CardImg style={{width: "100%", height:"100%",maxHeight:"300px", maxWidth:"300px"}} src={props.image} />
 
                     <CardSubtitle>
-                        <p>{props.subtitle}</p>
+                        <p style={{fontWeight: "bold"}} className="ft_ubnCon">{props.subtitle}</p>
                     </CardSubtitle>
 
                 </CardHeader>

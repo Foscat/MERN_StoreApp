@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default {
+  // User CRUD
   addUser: function(userData) {
     console.log(userData);
     return axios.post("/api/customers", userData);
@@ -9,13 +10,21 @@ export default {
   getUsers: function() {
     return axios.get("/api/customers");
   },
+  updateUser: function(id, updateData) {
+    console.log(id, updateData);
+    return axios.put("/api/customers/" + id, updateData)
+  },
+  deleteUser: function(id) {
+    return axios.delete("/api/customers/" + id);
+  },
+
+
+  // Product CRUD
+
   // Gets all products in inventory
   getProducts: function() {
     return axios.get("/api/inventory");
   },
-  // getSingleProduct: function() {
-  //   return axios.get("/api/inventory/" + id)
-  // },
   // Deletes the product with the given id
   deleteProduct: function(id) {
     return axios.delete("/api/inventory/" + id);
@@ -24,6 +33,10 @@ export default {
   addProduct: function(productData) {
     console.log(productData);
     return axios.post("/api/inventory", productData);
+  },
+  updateProduct: function(id, updateData) {
+    console.log(id, updateData);
+    return axios.put("/api/inventory/" + id, updateData)
+
   }
 };
-// http://localhost:3001/api/inventory

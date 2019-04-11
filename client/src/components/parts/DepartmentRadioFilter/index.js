@@ -38,7 +38,7 @@ const DepartmentRadioFilter = (props) => {
                         </Label>
                     </FormGroup>
 
-                    <Button type="button" onClick={props.handleDeptFilterFormSubmit}>Filter</Button>
+                    <Button type="button" onClick={props.handleFormSubmit}>Filter</Button>
 
                 </FormGroup>
             </Form>
