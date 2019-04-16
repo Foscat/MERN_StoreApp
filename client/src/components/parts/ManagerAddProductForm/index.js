@@ -12,6 +12,7 @@ const ManagerAddProductForm = ({style, handleFormSubmit, handleInputChange,}) =>
                      id="productName" placeholder="Product Name" />
                 </FormGroup>
 
+                {/* Make it to where you can put image files from explorer */}
                 <FormGroup>
                     <Label for="productImage">Image Link</Label>
                     <Input type="text" name="addProImg" onChange={handleInputChange}

@@ -12,28 +12,32 @@ const DepartmentRadioFilter = (props) => {
 
                     <FormGroup check>
                         <Label check>
-                        <Input type="radio" onChange={props.handleInputChange} name="radio1" value="General Goods" />{' '}
+                        <Input type="radio" onChange={props.handleInputChange}
+                         name="deptRadio" value="General Goods" />{' '}
                             General Goods
                         </Label>
                     </FormGroup>
 
                     <FormGroup check>
                         <Label check>
-                        <Input type="radio" onChange={props.handleInputChange} name="radio1" value="Gadgets" />{' '}
+                        <Input type="radio" onChange={props.handleInputChange}
+                         name="deptRadio" value="Gadgets" />{' '}
                             Gadgets
                         </Label>
                     </FormGroup>
 
                     <FormGroup check>
                         <Label check>
-                        <Input type="radio" onChange={props.handleInputChange} name="radio1" value="Clothes" />{' '}
+                        <Input type="radio" onChange={props.handleInputChange}
+                         name="deptRadio" value="Clothes" />{' '}
                             Clothes
                         </Label>
                     </FormGroup>
 
                     <FormGroup check>
                         <Label check>
-                        <Input type="radio" onChange={props.handleInputChange} name="radio1" value="Toys" />{' '}
+                        <Input type="radio" onChange={props.handleInputChange}
+                         name="deptRadio" value="Toys" />{' '}
                             Toys
                         </Label>
                     </FormGroup>

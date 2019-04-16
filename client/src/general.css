@@ -7,6 +7,9 @@
 .ft_ubnCon {
     font-family: 'Ubuntu Condensed', sans-serif;
 }
+.ft_ProstoOne {
+    font-family: 'Prosto One', cursive;
+}
 
 .center{
     display: flex;

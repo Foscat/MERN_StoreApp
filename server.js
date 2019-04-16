@@ -24,7 +24,6 @@ app.use(function(req, res, next) {
 });
 
 // Connect to MongoDB
-
 mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/mern_storeapp",
     {

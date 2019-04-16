@@ -6,6 +6,7 @@ import ResponsiveNav from "../../parts/ResponsiveNav";
 import API from "../../../utils/API";
 import ManagerAddProductForm from '../../parts/ManagerAddProductForm';
 import DepartmentRadioFilter from '../../parts/DepartmentRadioFilter';
+import "./style.css";
 
 
 class ManagerHome extends Component {
@@ -125,7 +126,7 @@ class ManagerHome extends Component {
             backgroundColor: "lightblue",
         }
         return (
-            <div>
+            <div className="managerHome">
 
                 <Container>
 
@@ -149,6 +150,8 @@ class ManagerHome extends Component {
                                     title="Add products"
                                     subtitle="Fill out form with product information and click submit to add to db"
                                 >
+                                    {/* Needs file dropper for user pics */}
+                                    {/* See component for that */}
                                     <ManagerAddProductForm 
                                         handleInputChange={this.handleInputChange} 
                                         handleFormSubmit={this.handleAddProFormSubmit}
@@ -158,7 +161,7 @@ class ManagerHome extends Component {
 
                             <Col>
                                 <TextCard
-                                    style={{border: "solid red 2px"}}
+                                    style={{border: "solid red 2px", backgroundColor: "#ddd"}}
                                     title="Find products by demartment"
                                     subtitle="Select a depeartment and click filter to get only items from that department."
                                 >

@@ -21,7 +21,7 @@ class ResponsiveNav extends Component {
                 <Nav>
 
                     <NavbarBrand>
-                        <h2 className="navLogo">mylogo</h2>
+                        <img style={{height: "5%", width: "5%"}} src="./Icon.png" />
                     </NavbarBrand>
 
                     <NavItem>
@@ -33,11 +33,7 @@ class ResponsiveNav extends Component {
                     </NavItem>
 
                     <NavItem>
-                        <NavLink href="#">Another Link</NavLink>
-                    </NavItem>
-
-                    <NavItem>
-                        <NavLink disabled href="#">Disabled Link</NavLink>
+                        <NavLink href="#">My Profile</NavLink>
                     </NavItem>
 
                 </Nav>
