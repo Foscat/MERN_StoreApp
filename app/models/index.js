@@ -1,5 +1,6 @@
 module.exports = {
     Customer: require("./customers"),
     Inventory: require("./inventory"),
-    History: require("./shopHistory")
+    CustHistory: require("./custHistory"),
+    GenHistory: require("./allHistory")
 };

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default {
+  
   // User CRUD
   addUser: function(userData) {
     console.log(userData);
@@ -17,7 +18,6 @@ export default {
   deleteUser: function(id) {
     return axios.delete("/api/customers/" + id);
   },
-
 
   // Product CRUD
 
@@ -40,24 +40,47 @@ export default {
 
   },
 
-  // History CRUD
+  // Customer Purchase History CRUD
 
-  // Gets all products in inventory
-  getHistory: function() {
+  // Gets all customer purchase history
+  getAllCustHistory: function() {
     return axios.get("/api/customers/:id/history");
   },
-  // Deletes the product with the given id
-  deleteHistory: function(id) {
+  // Deletes the history with the given id
+  delAllCustHistory: function(id) {
     return axios.delete("/api/customers/:id/history/" + id);
   },
-  // Saves an product to the database
-  addHistory: function(reciptData) {
+  // Saves an recipt as history to the database
+  addCustHistory: function(reciptData) {
     console.log(reciptData);
     return axios.post("/api/customers/:id/", reciptData);
   },
-  updateHistory: function(id, updateData) {
+  // Change info on old recipts
+  updateCustHistory: function(id, updateData) {
     console.log(id, updateData);
     return axios.put("/api/customers/:id/history/" + id, updateData)
+  },
 
-  }
+  // Any Purchase History for manager CRUD
+
+  // Gets all product purchase history (user, and freegrazer)
+  getAllHistory: function() {
+    return axios.get("/api/history");
+  },
+  // Deletes a specific history entry with the given id
+  delAllHistory: function(id) {
+    return axios.delete("/api/history/" + id);
+  },
+  // Saves an recipt as history to the database
+  addHistory: function(reciptData) {
+    console.log(reciptData);
+    return axios.post("/api/history", reciptData);
+  },
+  // Change info on old recipts
+  updateHistory: function(id, updateData) {
+    console.log(id, updateData);
+    return axios.put("/api/history/" + id, updateData)
+  },
+
+
 };

@@ -203,6 +203,7 @@ class ManagerHome extends Component {
 
                     </Row>
                 </Container>
+                <p style={{visibility: "hidden"}}>Property of K-Fizzle enterprises</p>
             </div>
         );
     }

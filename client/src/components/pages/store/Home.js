@@ -18,25 +18,30 @@ class Home extends Component {
             loading: false,
             userPool: [],
             pulledProducts: [],
-            myId: "",
+            cartArray: [],
+            myId: "123456",
             info: null,
             stockInfo: null,
-            show: false,
+            // show: false,
             title: null,
-            text: null
+            text: null,
+            totalPrice: 0
         }
+        this.counted = 0;
+        
     }
 
+    // When the page loads call function that displays all users in db and log current state
     componentDidMount(){
         this.getUsers();
-        console.log(this.state);
+        console.log("Mount", this.state);
     }
 
     componentDidUpdate(){
-        console.log("Upadate", this.state);
+        console.log("Update", this.state);
     }
 
-    // General handler for inputs thats value is to change the state
+    // General handler for inputs thats value is to change the state on the DOM
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -50,6 +55,7 @@ class Home extends Component {
     }
     // End construction
 
+    // function that handles adding a customer to the db
     signUpUser = async () => {
         console.log("Add user state: ", this.state);
         this.setState({ loading: true  });
@@ -63,21 +69,21 @@ class Home extends Component {
             phone_num: s.addCustPhone,
             zipcode: s.addCustZip,
             user_type: "customer",
-            sale_history: ["beanbag"]
+            sale_history: []
         })
         .then(() => this.getUsers())
     };
 
+    // Grabs all users in db and displays them on the DOM
     getUsers= async () => {
         console.log("Get users: ", this.state);
+        // Meat of code is tucked in the utils folder
         API.getUsers().then(res => this.setState({ userPool: res.data  }))
         .catch(() => {
             this.setState({ 
                 userPool: ["Didn't work"]
             });
         })
-
-
         this.setState({ loading: false  });
     }
 
@@ -94,29 +100,32 @@ class Home extends Component {
         this.setState({ loading: false  });
     }
 
-    // //////// Under construction \\\\\\\\\\\\\
-    addToCart = async (id, updateData) => {
+    addToCart = async (id, price) => {
         this.setState({ loading: true  });
-        console.log("Adding to user cart:", id);
-        console.log("Update data: ", updateData);
-        // API.updateUser(id, updateData).then(res => this.setState({ info: res.data  }));
-        // this.takeStockFromInventory(updateData.sale_history, {total_stock:100})
-
+        const updateData = {id, price};
+        this.state.cartArray.push(id);
+        const newCount = (updateData.price) + (this.counted);
+        this.updateCost(newCount);
     }
 
-    // takeStockFromInventory = async (id, quantity) => {
-    //     console.log("info check", id, quantity)
-    //     API.updateProduct(id, quantity).then(res => this.setState({ stockInfo: res.data  }))
+    updateCost = (newCount) => {
+        this.counted = newCount;
+        this.setState({ totalPrice: newCount,  loading: false });
+    }
 
-    //    await this.getProducts();
-    // }
-
-
+    buyItems = async () => {
+        const contents = this.state.cartArray;
+        const initalPrice = this.state.totalPrice; 
+        let recipt = [contents, initalPrice];
+        console.log("DB recipt: ", recipt);
+    }
 
     render() {
 
         const userBox = {
-            
+            border: "solid black 1px",
+            backgroundColor: "#fff",
+            padding: "10px"
         }
         const mystyle ={
             border: "solid 1px black", 
@@ -164,6 +173,7 @@ class Home extends Component {
                         >
                             
                             <Button type="button" onClick={() => this.getProducts()}>Get products</Button>
+                            <Button type="button" onClick={() => this.buyItems()}>Buy Items</Button>
                             {/* under construction <Button type="button" onClick={() => this.sweetTest()}>Sweet alert</Button> */}
                         </TextCard>
 
@@ -220,7 +230,7 @@ class Home extends Component {
                                                     <p>Price(each): {item.price}</p>
                                                     <p>Manufacturer: {item.manufacturer}</p>
                                                     <p>Total in stock: {item.total_stock}</p>
-                                                    <Button type="button" onClick={() => this.addToCart(this.state.myId, {"sale_history":item._id} )}>Add to shopping cart</Button>
+                                                    <Button type="button" onClick={() => this.addToCart(item._id, item.price)}>Add to shopping cart</Button>
                                                 </Col>
                                             </ProductSlide>
                                         );
@@ -235,7 +245,7 @@ class Home extends Component {
                                     {this.state.userPool.map((user) => {
                                         return(
                                             <TextCard
-                                                style={}
+                                                style={userBox}
                                                 className="ft_anton"
                                                 key={user._id}
                                                 title={user.first_name + " " + user.last_name}
@@ -254,6 +264,7 @@ class Home extends Component {
 
                     </Row>
                 </Container>
+                <p style={{visibility: "hidden"}}>Property of K-Fizzle enterprises</p>
             </div>
         );
     }

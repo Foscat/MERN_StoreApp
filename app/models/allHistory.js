@@ -1,11 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const historySchema = new Schema({
-    _customerId: {
-        type: Schema.Types.ObjectId,
-        ref: "Customer"
-    },
+const generalHistorySchema = new Schema({
+
+    signed_in: {type: Boolean, required: true},
     cart: { type: Object},
     numItems: { type: Number },
     totalCost: { type: Number },
@@ -13,5 +11,5 @@ const historySchema = new Schema({
     created_at: { type: Date }
 })
 
-const History = mongoose.model("History", historySchema);
-module.exports = History;
+const GenHistory = mongoose.model("GenHistory", generalHistorySchema);
+module.exports = GenHistory;
