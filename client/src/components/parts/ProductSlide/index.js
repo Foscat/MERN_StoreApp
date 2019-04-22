@@ -13,7 +13,7 @@ const ProductSlide = (props) => {
                     </CardTitle>
 
                     <CardImg style={{width: "100%", height:"100%",maxHeight:"300px", maxWidth:"300px"}} 
-                     src={props.image} />
+                     src={props.image} alt="Image" />
 
                     <CardSubtitle>
                         <p style={{fontWeight: "bold"}} className="ft_ubnCon">{props.subtitle}</p>

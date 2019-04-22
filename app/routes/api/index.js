@@ -10,9 +10,9 @@ router.use("/customers", customerRoutes);
 
 // Customer Purchase history routes
 router.use("/custHistory", custHistoryRoutes)
-
 // General purchase history routes
 router.use("/genHistory", genHistoryRoutes);
+
 // Inventory Routes
 router.use("/inventory", inventoryRoutes);
 

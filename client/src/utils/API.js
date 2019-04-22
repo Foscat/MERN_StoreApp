@@ -11,10 +11,12 @@ export default {
   getUsers: function() {
     return axios.get("/api/customers");
   },
+  // update info on user
   updateUser: function(id, updateData) {
     console.log(id, updateData);
     return axios.put("/api/customers/" + id, updateData)
   },
+  // Delete a user
   deleteUser: function(id) {
     return axios.delete("/api/customers/" + id);
   },
@@ -34,6 +36,7 @@ export default {
     console.log(productData);
     return axios.post("/api/inventory", productData);
   },
+  // Updates product info in the db
   updateProduct: function(id, updateData) {
     console.log(id, updateData);
     return axios.put("/api/inventory/" + id, updateData)

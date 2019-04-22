@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Moment from 'react-moment';
+import 'moment-timezone';
 import { Container, Row, Col, Button } from 'reactstrap';
 import TextCard from "../../parts/TextCard";
 import FlexTron from "../../parts/FlexTron"
@@ -37,6 +39,7 @@ class Home extends Component {
         console.log("Mount", this.state);
     }
 
+
     componentDidUpdate(){
         console.log("Update", this.state);
     }
@@ -69,7 +72,9 @@ class Home extends Component {
             phone_num: s.addCustPhone,
             zipcode: s.addCustZip,
             user_type: "customer",
-            sale_history: []
+            sale_history: [],
+            payments: {},
+            // user_since: 
         })
         .then(() => this.getUsers())
     };
@@ -152,11 +157,14 @@ class Home extends Component {
             padding: "10px",
         }
 
+        let date = "1976-04-19T12:59-0500";
 
         return (
             <div className="Home">
                 <ResponsiveNav />
                 <Container>
+                    {/* Keep this here to show how moment is used in react */}
+                    <Moment>{date}</Moment>
                     <Row>
                         <h1 style={{fontSize:"300%"}} className="ft_ProstoOne">Customer Home</h1>
                         <FlexTron

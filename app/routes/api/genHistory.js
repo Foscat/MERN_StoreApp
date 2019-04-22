@@ -1,8 +1,9 @@
 var router = require("express").Router();
 var genHistoryController = require("../../controllers/genHistory");
 
-router.get("/:id", genHistoryController.find);
+router.get("/", genHistoryController.findAll)
+router.get("/:id", genHistoryController.findById);
 router.post("/", genHistoryController.create);
-router.delete("/:id", genHistoryController.delete);
+router.delete("/:id", genHistoryController.remove);
 
 module.exports = router;

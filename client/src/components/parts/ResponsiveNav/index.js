@@ -21,7 +21,7 @@ class ResponsiveNav extends Component {
                 <Nav>
 
                     <NavbarBrand>
-                        <img style={{height: "5%", width: "5%"}} src="./Icon.png" />
+                        <img style={{height: "5%", width: "5%"}} src="./Icon.png" alt="Logo" />
                     </NavbarBrand>
 
                     <NavItem>
