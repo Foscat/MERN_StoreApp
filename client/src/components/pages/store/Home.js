@@ -6,7 +6,8 @@ import TextCard from "../../parts/TextCard";
 import FlexTron from "../../parts/FlexTron"
 import ResponsiveNav from "../../parts/ResponsiveNav";
 import ProductSlide from "../../parts/ProductSlide";
-import CustomerSignUpForm from "../../parts/CustomerSignUpForm";
+import CustomerSignInForm from "../../parts/CustomerSignInForm";
+import CustomerSignUp from "../../parts/CustomerSignUp";
 import DepartmentRadioFilter from "../../parts/DepartmentRadioFilter";
 import API from '../../../utils/API';
 import "./style.css";
@@ -78,6 +79,12 @@ class Home extends Component {
         })
         .then(() => this.getUsers())
     };
+
+    signInUser = async () => {
+        console.log("Sign In User");
+        // this.setState({ loading: true  });
+        
+    }
 
     // Grabs all users in db and displays them on the DOM
     getUsers= async () => {
@@ -189,16 +196,24 @@ class Home extends Component {
 
                             <Col style={{width:"40%"}}>
                                 <TextCard
-                                    title="Sign up card"
-                                    subtitle="Fill out for to add user to db"
+                                    title="Sign in card"
+                                    subtitle="Fill out to sign into your account."
                                     style={{border:"solid blue 2px", backgroundColor: "rgb(144, 114, 95)", margin:"10px"}}
                                 >
-                                    <CustomerSignUpForm 
+                                    <CustomerSignInForm
                                         handleInputChange={this.handleInputChange}
-                                        handleFormSubmit={this.signUpUser}
+                                        handleFormSubmit={this.signInUser}
                                         style={signUp}
                                     />
                                 </TextCard>
+                            </Col>
+
+                            <Col>
+                                <CustomerSignUp 
+                                    handleInputChange={this.handleInputChange}
+                                    handleFormSubmit={this.signUpUser} 
+                                    style={signUp}
+                                />
                             </Col>
 
                             <Col>

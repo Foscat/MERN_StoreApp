@@ -1,10 +1,10 @@
 import React from 'react';
-import Flextron from "../../parts/FlexTron";
-import TextCard from "../../parts/TextCard";
+import Flextron from "../FlexTron";
+import TextCard from "../TextCard";
 import { Row, Container } from 'reactstrap';
-import CustomerSignInForm from '../../parts/CustomerSignInForm';
+import CustomerSignUpForm from './CustomerSignUpForm';
 
-const CustomerSignInPage = (props) => {
+const CustomerSignUp = (props) => {
     
     return(
         <div className="CustSignUp ft_mukta">
@@ -28,10 +28,10 @@ const CustomerSignInPage = (props) => {
 
                     <TextCard 
                      title="Sign Up Card"
-                     subtitle="Fill out info and sign in"
+                     subtitle="Fill out info and sign up"
                      style={{width:"fit-content"}}
                     >
-                        <CustomerSignInForm />
+                        <CustomerSignUpForm />
                     </TextCard>
 
                 </Row>
@@ -42,4 +42,4 @@ const CustomerSignInPage = (props) => {
     )
 }
 
-export default CustomerSignInPage;
+export default CustomerSignUp;
