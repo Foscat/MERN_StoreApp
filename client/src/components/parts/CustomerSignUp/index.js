@@ -29,7 +29,7 @@ const CustomerSignUp = (props) => {
                     <TextCard 
                      title="Sign Up Card"
                      subtitle="Fill out info and sign up"
-                     style={{width:"fit-content"}}
+                     style={{width:"fit-content", backgroundColor: "blue"}}
                     >
                         <CustomerSignUpForm />
                     </TextCard>
