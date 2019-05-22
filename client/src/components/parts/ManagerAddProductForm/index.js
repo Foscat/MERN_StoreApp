@@ -54,6 +54,18 @@ const ManagerAddProductForm = ({style, handleFormSubmit, handleInputChange,}) =>
                      onChange={handleInputChange} />
                 </FormGroup>
 
+                <FormGroup>
+                    <Label for="productWeight">Product Weight</Label>
+                    <Input type="number" name="addProWeight" id="productWeight" 
+                     onChange={handleInputChange} />
+                </FormGroup>
+
+                <FormGroup>
+                    <Label for="productVolume">Product Volume</Label>
+                    <Input type="number" name="addProVolume" id="productVolume" 
+                     onChange={handleInputChange} />
+                </FormGroup>
+
                 <Button onClick={handleFormSubmit}>Submit</Button>
             </Form>
         </div>

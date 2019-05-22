@@ -1,4 +1,5 @@
 const db = require("../models");
+console.log("controllers");
 
 // Defining methods for the bookController
 module.exports = {
@@ -13,7 +14,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log(req.body);
+    console.log("Post inventory: " ,req.body);
     db.Inventory.create(req.body)
       .then(dbInventory => res.json(dbInventory))
       .catch(err => res.status(422).json(err));

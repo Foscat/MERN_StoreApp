@@ -25,7 +25,9 @@ class ManagerHome extends Component {
                 manufacturer: "",
                 quantity: null,
                 price: null,
-                description: ""
+                description: "",
+                weight: null,
+                volume: null
             }
         }
     }
@@ -49,7 +51,7 @@ class ManagerHome extends Component {
 
     // #### **Make backend and util methods and functions** ####
     handleDeptFilterFormSubmit = event => {
-        console.log("form submit");
+        console.log("form submit", this.state.deptRadio);
         event.preventDefault();
 
         // API.
@@ -66,7 +68,9 @@ class ManagerHome extends Component {
                 manufacturer: this.state.addProManu,
                 quantity: this.state.addProQuan,
                 price: this.state.addProPrice,
-                description: this.state.addProDes
+                description: this.state.addProDes,
+                weight: this.state.addProWeight,
+                volume: this.addProVolume
             }
          });
         this.addToInventory();
@@ -85,7 +89,9 @@ class ManagerHome extends Component {
             manufacturer: s.addProManu,
             total_stock: s.addProQuan,
             price: s.addProPrice,
-            description: s.addProDes
+            description: s.addProDes,
+            weight: s.addProWeight,
+            volume: s.addProVolume
         })
         .then(() => this.getProducts())
     };
@@ -191,6 +197,8 @@ class ManagerHome extends Component {
                                                     <p>Price(each): {item.price}</p>
                                                     <p>Manufacturer: {item.manufacturer}</p>
                                                     <p>Total in stock: {item.total_stock}</p>
+                                                    <p>Weight per item: {item.weight}</p>
+                                                    <p>Shipping volume per item: {item.volume}</p>
                                                     <Button type="button" onClick={() => this.deleteProduct(item._id)}>Delete</Button>
                                                 </Col>
                                             </TextCard>

@@ -10,9 +10,9 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended:true }));
 app.use(express.json());
 // // Have express use static assets
-// if(process.env.NODE_ENV === "production") {
-//     app.use(express.static("client/build"));
-// }
+if(process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
 // Have express use routes
 app.use(routes);
 

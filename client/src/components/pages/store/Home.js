@@ -205,15 +205,12 @@ class Home extends Component {
                                         handleFormSubmit={this.signInUser}
                                         style={signUp}
                                     />
-                                </TextCard>
-                            </Col>
 
-                            <Col>
-                                <CustomerSignUp 
-                                    handleInputChange={this.handleInputChange}
-                                    handleFormSubmit={this.signUpUser} 
-                                    style={signUp}
-                                />
+                                    <label for="joinBtn">Not a member?</label>
+                                    <a href="/SignUp"><Button id="joinBtn" type="button" className="btn">
+                                        Join today!
+                                    </Button></a>
+                                </TextCard>
                             </Col>
 
                             <Col>
@@ -253,6 +250,8 @@ class Home extends Component {
                                                     <p>Price(each): {item.price}</p>
                                                     <p>Manufacturer: {item.manufacturer}</p>
                                                     <p>Total in stock: {item.total_stock}</p>
+                                                    <p>Item weight: {item.weight}</p>
+                                                    <p>Item Volume: {item.volume}</p>
                                                     <Button type="button" onClick={() => this.addToCart(item._id, item.price)}>Add to shopping cart</Button>
                                                 </Col>
                                             </ProductSlide>
