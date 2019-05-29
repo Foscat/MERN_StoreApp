@@ -41,6 +41,7 @@ class Home extends Component {
     }
 
 
+    //Anytime the component updates this function fires
     componentDidUpdate(){
         console.log("Update", this.state);
     }
@@ -65,6 +66,7 @@ class Home extends Component {
         this.setState({ loading: true  });
         const s = this.state
 
+        // Take in info from state and send off to post to db
         API.addUser({
             first_name: s.addCustName1,
             last_name: s.addCustName2,
@@ -80,6 +82,8 @@ class Home extends Component {
         .then(() => this.getUsers())
     };
 
+    // To sign is a user 
+    // ** Under construction needs utils to find one user and checkif info lines up**
     signInUser = async () => {
         console.log("Sign In User");
         // this.setState({ loading: true  });
@@ -104,6 +108,7 @@ class Home extends Component {
         this.setState({ loading: true  });
         console.log("Get products: ", this.state);
         API.getProducts().then(res => this.setState({ pulledProducts: res.data  }))
+        // If something goes wrong a default entry into the array is entered
         .catch(() => {
             this.setState({ 
                 pulledProducts: ["Didn't work"]
@@ -112,6 +117,7 @@ class Home extends Component {
         this.setState({ loading: false  });
     }
 
+    // When a user clicks on the add to cart button on product
     addToCart = async (id, price) => {
         this.setState({ loading: true  });
         const updateData = {id, price};
@@ -120,11 +126,14 @@ class Home extends Component {
         this.updateCost(newCount);
     }
 
+    // When a new item is added to cart add up total value
     updateCost = (newCount) => {
         this.counted = newCount;
         this.setState({ totalPrice: newCount,  loading: false });
     }
 
+    // Function to build recipt of items
+    // ** Use recipt varible for saving info in history schemas ** 
     buyItems = async () => {
         const contents = this.state.cartArray;
         const initalPrice = this.state.totalPrice; 
@@ -134,6 +143,7 @@ class Home extends Component {
 
     render() {
 
+        // Objects to hold temporary css values to import into components
         const userBox = {
             border: "solid black 1px",
             backgroundColor: "#fff",

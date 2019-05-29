@@ -21,6 +21,8 @@ export default {
     return axios.delete("/api/customers/" + id);
   },
 
+  ///////////////////////////////////////////////////////////////////////
+
   // Product CRUD
 
   // Gets all products in inventory
@@ -43,6 +45,8 @@ export default {
 
   },
 
+  //////////////////////////////////////////////////////////////////
+
   // Customer Purchase History CRUD
 
   // Gets all customer purchase history
@@ -64,6 +68,8 @@ export default {
     return axios.put("/api/customers/:id/history/" + id, updateData)
   },
 
+  ///////////////////////////////////////////////////////////////////////
+  
   // Any Purchase History for manager CRUD
 
   // Gets all product purchase history (user, and freegrazer)

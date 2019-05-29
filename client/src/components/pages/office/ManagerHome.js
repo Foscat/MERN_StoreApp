@@ -53,13 +53,12 @@ class ManagerHome extends Component {
     handleDeptFilterFormSubmit = event => {
         console.log("form submit", this.state.deptRadio);
         event.preventDefault();
-
-        // API.
     }
 
     // Click handler that takes in infoand updates state. needed for sync timing to filter through
     handleAddProFormSubmit = event => {
         event.preventDefault();
+        // Input form info into state
         this.setState({ 
             formInfo: {
                 name: this.state.addProName,
@@ -96,7 +95,7 @@ class ManagerHome extends Component {
         .then(() => this.getProducts())
     };
 
-    // Sends off to tils where there is a api call to the backend route that gets all info in inventory db
+    // Sends off to utils where there is a api call to the backend route that gets all info in inventory db
     getProducts= async () => {
         console.log("Get products: ", this.state);
         API.getProducts().then(res => this.setState({ pulledProducts: res.data  }))
@@ -137,6 +136,7 @@ class ManagerHome extends Component {
                 <Container>
 
                     <Row>
+                        {/* Make nav bar */}
                         <ResponsiveNav />
 
                         <FlexTron
@@ -166,11 +166,13 @@ class ManagerHome extends Component {
                             </Col>
 
                             <Col>
+                                {/* Box for holding department filter */}
                                 <TextCard
                                     style={{border: "solid red 2px", backgroundColor: "#ddd"}}
                                     title="Find products by demartment"
                                     subtitle="Select a depeartment and click filter to get only items from that department."
                                 >
+                                    {/* Department filter component */}
                                     <DepartmentRadioFilter 
                                         handleFormSubmit={this.handleDeptFilterFormSubmit}
                                         handleInputChange={this.handleInputChange}
