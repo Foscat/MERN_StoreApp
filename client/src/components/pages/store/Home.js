@@ -63,6 +63,7 @@ class Home extends Component {
     // function that handles adding a customer to the db
     signUpUser = async () => {
         console.log("Add user state: ", this.state);
+        // For when a loading screen is added parts will be in place for it to start 
         this.setState({ loading: true  });
         const s = this.state
 
@@ -79,6 +80,7 @@ class Home extends Component {
             payments: {},
             // user_since: 
         })
+        // After user is added to db call function to get all users
         .then(() => this.getUsers())
     };
 
@@ -93,13 +95,14 @@ class Home extends Component {
     // Grabs all users in db and displays them on the DOM
     getUsers= async () => {
         console.log("Get users: ", this.state);
-        // Meat of code is tucked in the utils folder
+        // When users are pulled from the db the are put into an array. That array when it contains info loops and makes cards for each user
         API.getUsers().then(res => this.setState({ userPool: res.data  }))
         .catch(() => {
             this.setState({ 
                 userPool: ["Didn't work"]
             });
         })
+        // For when a loading screen is added parts will be in place for it to stop 
         this.setState({ loading: false  });
     }
 
@@ -119,10 +122,15 @@ class Home extends Component {
 
     // When a user clicks on the add to cart button on product
     addToCart = async (id, price) => {
+        // For when a loading screen is added parts will be in place for it to start 
         this.setState({ loading: true  });
+        // Contain values so can be placed accordingly
         const updateData = {id, price};
+        // Push id into array so we can use it to refrence data for future functions on its data
         this.state.cartArray.push(id);
+        // Take cost of item and add it to current total
         const newCount = (updateData.price) + (this.counted);
+        //Call add function that updates current total
         this.updateCost(newCount);
     }
 
@@ -135,9 +143,13 @@ class Home extends Component {
     // Function to build recipt of items
     // ** Use recipt varible for saving info in history schemas ** 
     buyItems = async () => {
+        // All ids of items that users selected to purchase 
         const contents = this.state.cartArray;
+        // This will hold base price and wil be used as total or if cupons apply it will take form this number
         const initalPrice = this.state.totalPrice; 
+        //This array holds the id array and the current running total
         let recipt = [contents, initalPrice];
+        // Check contents
         console.log("DB recipt: ", recipt);
     }
 
@@ -215,11 +227,13 @@ class Home extends Component {
                                         handleFormSubmit={this.signInUser}
                                         style={signUp}
                                     />
-
+                                    {/* Take users to sign up page if not a member */}
                                     <label for="joinBtn">Not a member?</label>
-                                    <a href="/SignUp"><Button id="joinBtn" type="button" className="btn">
-                                        Join today!
-                                    </Button></a>
+                                    <a href="/SignUp">
+                                        <Button id="joinBtn" type="button" className="btn">
+                                            Join today!
+                                        </Button>
+                                    </a>
                                 </TextCard>
                             </Col>
 
@@ -271,6 +285,7 @@ class Home extends Component {
                             ) : (<h1>Nothing Here</h1>)}
                         </Row>
 
+                        {/* Row holding all current users in db. Only here in dev process to see what is in db */}
                         <Row className="around">
                             {this.state.userPool.length ? (
                                 <div className="center">

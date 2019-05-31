@@ -150,6 +150,8 @@ class ManagerHome extends Component {
                         <h1>Manager Home</h1>
 
                         <Row style={{display: "flex"}}>
+
+                            {/* Form for adding new products to inventory */}
                             <Col>
                                 <TextCard
                                     style={{backgroundColor: "#ddd"}}
